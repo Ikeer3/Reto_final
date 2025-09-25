@@ -1,3 +1,5 @@
+import static java.lang.Math.max;
+
 public class Main {
 
 
@@ -218,16 +220,44 @@ public class Main {
 
         // ======= TU CÓDIGO AQUÍ =======
         String juego = "Fortnite";
-        int kills = 5;
-        int muertes = 3;
+        int kills = 15;
+        int muertes = 0;
         int asistencias = 8;
-        int tiempoMin = 60;
-        int objetivos = 2;
+        int tiempoMin = 50;
         boolean desconexion = true;
         int dañoHecho = 50000;
         int dañoRecibido = 30000;
         int oro = 3000;
+        int KDA = (kills + asistencias) / max(1, muertes);
 
+        if (desconexion && tiempoMin < 5) {
+            System.out.println("Logro NEGATIVO: Rage Quit 😠");
+        } else if (KDA >= 5) {
+            System.out.println("Jugador PRO");
+        } else if (KDA >= 3 && KDA < 5) {
+            System.out.println("Jugador BUENO");
+        } else if (KDA >= 1 && KDA < 3) {
+            System.out.println("Jugador NORMAL");
+        } else if (KDA < 1) {
+            System.out.println("Jugador NOOB");
+        }
+
+        if (kills >= 10) {
+            System.out.println("Logro: Cazador experto \uD83C\uDFF9");
+        } else if (muertes == 0 && kills >=5) {
+            System.out.println("\nLogro: Intocable \uD83D\uDC51");
+        }
+        // Logros básicos independientes (pueden acumularse):
+
+        //        kills >= 10                    → "Logro: Cazador experto 🏹"
+
+        //        muertes == 0 && kills >= 5     → "Logro: Intocable 👑"
+
+        //        tiempoMin > 60                 → "Logro: Maratón gamer ⏱️"
+
+        //        dañoHecho > dañoRecibido*2     → "Logro: Dominio total 💥"
+
+        //        objetivos >= 3                 → "Logro: Objetivos de mapa 🎯"
     }
 
 }
