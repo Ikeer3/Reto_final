@@ -214,16 +214,16 @@ public class Main {
 
 
         // ======= TU CÓDIGO AQUÍ =======
-        String juego = "Fortnite";
-        int kills = 0;
-        int muertes = 0;
-        int asistencias = 0;
-        int tiempoMin = 0;
-        int objetivos = 1;
+        String juego = "Minecraft";
+        int kills = 10;
+        int muertes = 3;
+        int asistencias = 5;
+        int tiempoMin = 3;
+        int objetivos = 3;
         boolean desconexion = false;
-        int danoHecho = 50000;
-        int danoRecibido = 500;
-        int oro = 1000;
+        int danoHecho = 15000;
+        int danoRecibido = 6000;
+        int oro = 3000;
         int score = 0;
         double KDA = (kills + asistencias) / max(1, muertes);
 
@@ -233,10 +233,13 @@ public class Main {
         }
         if (KDA >= 5 && !tuvoRQ) {
             System.out.println("Jugador PRO");
+            score += 20;
         } else if (KDA >= 3) {
             System.out.println("Jugador BUENO");
+            score += 10;
         } else if (KDA >= 1) {
             System.out.println("Jugador NORMAL");
+            score += 10;
         } else {
             System.out.println("Jugador NOOB");
         }
@@ -284,6 +287,25 @@ public class Main {
             if (asistencias >= 3)
                 System.out.println("Apoyo del equipo (PKMN) 🤝");
         }
+
+        if (score >= 40 && !tuvoRQ) {
+            System.out.println("\nMVP de la jornada 🏆");
+        }
+
+        // 7) EXTENSIONES OPCIONALES (sube dificultad):
+
+        //    - Suma un "score" total: +10 por logro normal, +20 por logros PRO.
+
+        //    - Si score ≥ 40 y no hubo Rage Quit → "MVP de la jornada 🏆".
+
+        //    - Si dañoRecibido == 0 y tiempoMin ≥ 30 → "Perfect Defense 🧱".
+
+        //    - Si (juego == "LoL" || juego == "Fortnite") && (kills + asistencias) ≥ 25 → "Impacto masivo 🌪️".
+
+        //    - Prioriza validaciones: AFK y Rage Quit antes que el resto.
+
+        //    - Usa if anidados para practicar flujo de decisión.
+
     }
 
 }
