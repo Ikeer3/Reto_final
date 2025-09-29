@@ -215,11 +215,11 @@ public class Main {
 
         // ======= TU CÓDIGO AQUÍ =======
         String juego = "Fortnite";
-        int kills = 20;
-        int muertes = 1;
-        int asistencias = 15;
-        int tiempoMin = 60;
-        int objetivos = 3;
+        int kills = 0;
+        int muertes = 0;
+        int asistencias = 0;
+        int tiempoMin = 0;
+        int objetivos = 1;
         boolean desconexion = false;
         int danoHecho = 50000;
         int danoRecibido = 500;
@@ -241,19 +241,19 @@ public class Main {
             System.out.println("Jugador NOOB");
         }
 
-        if (kills >= 10) {
+        boolean pInvalida = (muertes == 0 && kills == 0 && asistencias == 0 && tiempoMin == 0);
+        if (pInvalida) {
+            System.out.println("Partida inválida: AFK");
+        }
+        if (kills >= 10 && !pInvalida) {
             System.out.println("Logro: Cazador experto \uD83C\uDFF9");
-        }
-        if (muertes == 0 && kills >= 5) {
+        } if (muertes == 0 && kills >= 5 && !pInvalida) {
             System.out.println("Logro: Intocable \uD83D\uDC51");
-        }
-        if (tiempoMin > 60) {
+        } if (tiempoMin > 60 && !pInvalida) {
             System.out.println("Logro: Maratón gamer ⏱\uFE0F");
-        }
-        if (danoHecho > danoRecibido * 2) {
+        } if (danoHecho > danoRecibido * 2 && !pInvalida) {
             System.out.println("Logro: Dominio total 💥");
-        }
-        if (objetivos >= 3) {
+        } if (objetivos >= 3 && !pInvalida) {
             System.out.println("Logro: Objetivos de mapa \uD83C\uDFAF");
         }
 
@@ -284,7 +284,6 @@ public class Main {
             if (asistencias >= 3)
                 System.out.println("Apoyo del equipo (PKMN) 🤝");
         }
-        
     }
 
 }
