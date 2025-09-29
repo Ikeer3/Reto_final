@@ -3,9 +3,7 @@ import static java.lang.Math.max;
 public class Main {
 
 
-
     public static void main(String[] args) {
-
 
 
         // ============================================================
@@ -215,23 +213,21 @@ public class Main {
         //  - Ejecuta varias veces cambiando los valores de entrada.
 
 
-
-
-
         // ======= TU CÓDIGO AQUÍ =======
         String juego = "Fortnite";
-        int kills = 10;
-        int muertes = 3;
-        int asistencias = 5;
-        int tiempoMin = 3;
-        int objetivos = 5;
+        int kills = 20;
+        int muertes = 1;
+        int asistencias = 15;
+        int tiempoMin = 60;
+        int objetivos = 3;
         boolean desconexion = false;
         int danoHecho = 50000;
-        int danoRecibido = 10000;
-        int oro = 3000;
-        int KDA = (kills + asistencias) / max(1, muertes);
+        int danoRecibido = 500;
+        int oro = 1000;
+        int score = 0;
+        double KDA = (kills + asistencias) / max(1, muertes);
 
-        boolean tuvoRQ= desconexion && (tiempoMin < 5);
+        boolean tuvoRQ = desconexion && (tiempoMin < 5);
         if (tuvoRQ) {
             System.out.println("Logro NEGATIVO: Rage Quit 😠");
         }
@@ -247,16 +243,48 @@ public class Main {
 
         if (kills >= 10) {
             System.out.println("Logro: Cazador experto \uD83C\uDFF9");
-        } if (muertes == 0 && kills >=5) {
+        }
+        if (muertes == 0 && kills >= 5) {
             System.out.println("Logro: Intocable \uD83D\uDC51");
-        } if (tiempoMin > 60) {
+        }
+        if (tiempoMin > 60) {
             System.out.println("Logro: Maratón gamer ⏱\uFE0F");
-        } if (danoHecho > danoRecibido*2) {
+        }
+        if (danoHecho > danoRecibido * 2) {
             System.out.println("Logro: Dominio total 💥");
-        } if (objetivos >= 3) {
+        }
+        if (objetivos >= 3) {
             System.out.println("Logro: Objetivos de mapa \uD83C\uDFAF");
         }
 
+        if (juego == "Fortnite") {
+            if (kills >= 15 && muertes <= 2) {
+                System.out.println("\nVictoria agresiva (Fortnite) \uD83D\uDD2B");
+            }
+            if (oro >= 2000) {
+                System.out.println("Ahorrista de V-Bucks (Fortnite) 💰");
+            }
+        } else if (juego == "LoL") {
+            if (objetivos >= 2 && asistencias >= 10) {
+                System.out.println("\nShotcaller (LoL) 🗣️");
+            }
+            if (danoHecho >= 30000 && muertes <= 3) {
+                System.out.println("Carry principal (LoL) 🛡️");
+            }
+        } else if (juego == "Minecraft") {
+            if (tiempoMin >= 45 && danoRecibido == 0) {
+                System.out.println("\nSuperviviente pacífico (MC) \uD83C\uDF3F");
+            }
+            if (objetivos >= 5) {
+                System.out.println("Constructor incansable (MC) \uD83E\uDDF1");
+            }
+        } else if (juego == "Pokemon") {
+            if (kills >= 6 && danoRecibido <= 1000)
+                System.out.println("\nEntrenador maestro (PKMN) 🧢");
+            if (asistencias >= 3)
+                System.out.println("Apoyo del equipo (PKMN) 🤝");
+        }
+        
     }
 
 }
