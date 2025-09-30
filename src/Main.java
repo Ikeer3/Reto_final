@@ -214,15 +214,15 @@ public class Main {
 
 
         // ======= TU CÓDIGO AQUÍ =======
-        String juego = "Minecraft";
-        int kills = 10;
-        int muertes = 3;
-        int asistencias = 5;
-        int tiempoMin = 3;
+        String juego = "Fortnite";
+        int kills = 15;
+        int muertes = 0;
+        int asistencias = 10;
+        int tiempoMin = 0;
         int objetivos = 3;
         boolean desconexion = false;
         int danoHecho = 15000;
-        int danoRecibido = 6000;
+        int danoRecibido = 0;
         int oro = 3000;
         int score = 0;
         double KDA = (kills + asistencias) / max(1, muertes);
@@ -250,14 +250,31 @@ public class Main {
         }
         if (kills >= 10 && !pInvalida) {
             System.out.println("Logro: Cazador experto \uD83C\uDFF9");
-        } if (muertes == 0 && kills >= 5 && !pInvalida) {
+            score += 20;
+        }
+        if (muertes == 0 && kills >= 5 && !pInvalida) {
             System.out.println("Logro: Intocable \uD83D\uDC51");
-        } if (tiempoMin > 60 && !pInvalida) {
+            score += 10;
+        }
+        if (tiempoMin > 60 && !pInvalida) {
             System.out.println("Logro: Maratón gamer ⏱\uFE0F");
-        } if (danoHecho > danoRecibido * 2 && !pInvalida) {
+            score += 10;
+        }
+        if (danoHecho > danoRecibido * 2 && !pInvalida) {
             System.out.println("Logro: Dominio total 💥");
-        } if (objetivos >= 3 && !pInvalida) {
+            score += 10;
+        }
+        if (objetivos >= 3 && !pInvalida) {
             System.out.println("Logro: Objetivos de mapa \uD83C\uDFAF");
+            score += 10;
+        }
+        if (danoRecibido == 0 && tiempoMin >= 30) {
+            System.out.println("Logro: Perfect Defense 🧱");
+            score += 10;
+        }
+        if (juego == "LoL" || juego == "Fortnite" && (kills + asistencias >= 25)) {
+            System.out.println("Logro: Impacto masivo 🌪️");
+            score += 20;
         }
 
         if (juego == "Fortnite") {
@@ -282,30 +299,16 @@ public class Main {
                 System.out.println("Constructor incansable (MC) \uD83E\uDDF1");
             }
         } else if (juego == "Pokemon") {
-            if (kills >= 6 && danoRecibido <= 1000)
+            if (kills >= 6 && danoRecibido <= 1000) {
                 System.out.println("\nEntrenador maestro (PKMN) 🧢");
-            if (asistencias >= 3)
+            }
+            if (asistencias >= 3) {
                 System.out.println("Apoyo del equipo (PKMN) 🤝");
+            }
         }
 
         if (score >= 40 && !tuvoRQ) {
             System.out.println("\nMVP de la jornada 🏆");
         }
-
-        // 7) EXTENSIONES OPCIONALES (sube dificultad):
-
-        //    - Suma un "score" total: +10 por logro normal, +20 por logros PRO.
-
-        //    - Si score ≥ 40 y no hubo Rage Quit → "MVP de la jornada 🏆".
-
-        //    - Si dañoRecibido == 0 y tiempoMin ≥ 30 → "Perfect Defense 🧱".
-
-        //    - Si (juego == "LoL" || juego == "Fortnite") && (kills + asistencias) ≥ 25 → "Impacto masivo 🌪️".
-
-        //    - Prioriza validaciones: AFK y Rage Quit antes que el resto.
-
-        //    - Usa if anidados para practicar flujo de decisión.
-
     }
-
 }
